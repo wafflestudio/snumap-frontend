@@ -1,1 +1,3 @@
-# snumap-frontend
+# SNUMAP-WEBFRONT
+
+## SNUMAP WEBFRONT 레포입니다.
