@@ -22,6 +22,17 @@ const useNaverMap = (latitude: number, longtitude: number) => {
         };
         const map = new naver.maps.Map('myNaverMap', mapOptions);
         setMapObject(map);
+
+        const markerOptions = {
+          position: new naver.maps.LatLng(latitude, longtitude),
+          map: map,
+        };
+
+
+
+        const marker = new naver.maps.Marker(
+          markerOptions);
+
       })
       .catch(() => {
         console.log('error occurred while loading map');
