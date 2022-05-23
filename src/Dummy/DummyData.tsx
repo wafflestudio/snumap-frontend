@@ -1,17 +1,12 @@
-import img_1 from "../Image/301_1.jpg"
-import img_2 from "../Image/301_2.jpg"
+import {ImageType} from "../Interface/Interface";
 
-interface ImgData {
-    title: string,
-    img: string
+export const communityDummy = require("./image-dummy.json");
+export const buildingDummy = require("./building-dummy.json");
+export const getCommunityDummy = (id: string) => {
+    switch (id){
+        case "img":
+            return communityDummy;
+        case "building":
+            return buildingDummy;
+    }
 }
-
-const dummyData: ImgData[] =  [{
-    title: "301동_1",
-    img: img_1
-},{
-    title: "301동_2",
-    img: img_2
-}];
-
-export default dummyData;

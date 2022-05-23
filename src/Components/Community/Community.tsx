@@ -1,11 +1,15 @@
 import style from './Community.module.scss';
-import {ImageList,ImageListItem, Typography, Stack, Grid, Box} from '@mui/material'
-import dummyData from "../../Dummy/DummyData";
-import { styled } from '@mui/material/styles';
+import {ImageList,ImageListItem, Typography, Stack, Grid, Box, Accordion, AccordionDetails, AccordionSummary} from '@mui/material'
+import {getCommunityDummy} from "../../Dummy/DummyData";
+import {BuildingPlacesType, ImageType} from '../../Interface/Interface';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const Community = () => {
 
 
+
+    const dummyData = getCommunityDummy("img").data;
+    const buildingData = getCommunityDummy("building").data;
     return (
     <div className={style.community}>
 
@@ -17,7 +21,7 @@ const Community = () => {
                 <Grid item xs={12}>
                     <Box color="text.primary" bgcolor="white">
                         <ImageList sx={{width: 390}} cols={2} rowHeight={195}>
-                            {dummyData.map((item)=>(
+                            {dummyData.map((item:ImageType)=>(
                                 <ImageListItem key={item.img}>
                                     <img
                                         src={item.img}
@@ -38,9 +42,48 @@ const Community = () => {
                 </Grid>
                 <Grid item xs={12}>
                     <Box color="text.secondary" bgcolor="white">
+                        분실물
+                    </Box>
+                </Grid>
+
+                <Grid item xs={12}>
+                    <Box color="text.secondary" bgcolor="white">
+                        정보
+                    </Box>
+                </Grid>
+
+                <Grid item xs={12}>
+                    <Box color="text.secondary" bgcolor="white">
+                        장소 안내
+
+                        {buildingData.map((item: BuildingPlacesType)=>(
+                            <Accordion>
+                                <AccordionSummary
+                                    expandIcon={<ExpandMoreIcon />}
+                                    aria-controls="panel1a-content"
+                                    id="panel1a-header"
+                                >
+                                    <Typography>{item.floor}층</Typography>
+                                </AccordionSummary>
+                                <AccordionDetails>
+
+                                    {item.places.map((place)=>(
+                                        <Typography>
+                                            {place.name}
+                                        </Typography>
+                                    ))}
+
+
+                                </AccordionDetails>
+                            </Accordion>
+                        ))}
+
+
 
                     </Box>
                 </Grid>
+
+
             </Grid>
 
         </Stack>
