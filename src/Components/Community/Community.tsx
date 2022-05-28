@@ -1,9 +1,115 @@
 import style from './Community.module.scss';
+import {ImageList,ImageListItem, Typography, Grid, Box, Accordion, AccordionDetails, AccordionSummary} from '@mui/material'
+import {getCommunityDummy} from "../../Dummy/DummyData";
+import {BuildingPlacesType, ImageType} from '../../Interface/Interface';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import AlarmIcon from '@mui/icons-material/NotificationsActive';
+import InfoIcon from '@mui/icons-material/Info';
+import PlaceIcon from '@mui/icons-material/Place';
 
 const Community = () => {
-  return (
+
+    const dummyData = getCommunityDummy("img").data;
+    const buildingData = getCommunityDummy("building").data;
+    const lostData = "김xx님 1층에서 S카드 습득했습니다.";
+
+
+    return (
     <div className={style.community}>
-      <h1>개시판입니다.</h1>
+            <Grid container spacing={0.5}>
+                <Grid item>
+                    <Box color="text.primary" bgcolor="white">
+                        <ImageList cols={2} rowHeight={200} sx={{mt: 0}}>
+                            {dummyData.map((item:ImageType)=>(
+                                <ImageListItem key={item.img}>
+                                    <img
+                                        src={item.img}
+                                        alt={item.title}
+                                        loading="lazy"
+                                        className={style.communityImg}/>
+                                </ImageListItem>
+                            ))}
+                        </ImageList>
+                        <Typography variant="h3" className={style.placeTitle}>
+                            제1공학관
+                        </Typography>
+
+                        <Typography className={style.placeSubtitle}>
+                            윗공대
+                        </Typography>
+                    </Box>
+                </Grid>
+                <Grid item xs={12}>
+                    <Box bgcolor="white" sx={{p: 1}}>
+                        <Grid container alignItems="center">
+                            <Grid item>
+                                <AlarmIcon/>
+                            </Grid>
+                            <Grid item sx={{px: 0.5}}>
+                                <Typography>분실물</Typography>
+                            </Grid>
+                            <Grid item sx={{px: 1}} color="gray">
+                                <Typography>{lostData}</Typography>
+                            </Grid>
+                        </Grid>
+                    </Box>
+                </Grid>
+
+                <Grid item xs={12}>
+                    <Box bgcolor="white" sx={{p: 1, height: 150}}>
+                        <Grid container>
+                            <Grid item>
+                                <InfoIcon/>
+                            </Grid>
+                            <Grid item>
+                                <Typography>정보</Typography>
+                            </Grid>
+                        </Grid>
+                    </Box>
+                </Grid>
+
+                <Grid item xs={12}>
+                    <Box bgcolor="white" sx={{p: 1}}>
+                        <Grid container>
+                            <Grid item>
+                                <PlaceIcon/>
+                            </Grid>
+                            <Grid item>
+                                <Typography>장소 안내</Typography>
+                            </Grid>
+                        </Grid>
+
+                        {buildingData.map((item: BuildingPlacesType)=>(
+                            <Accordion>
+                                <AccordionSummary
+                                    expandIcon={<ExpandMoreIcon />}
+                                    aria-controls="panel1a-content"
+                                    id="panel1a-header"
+                                >
+                                    <Typography>{item.floor}층</Typography>
+                                </AccordionSummary>
+                                <AccordionDetails>
+
+                                    {item.places.map((place)=>(
+                                        <Typography>
+                                            {place.name}
+                                        </Typography>
+                                    ))}
+
+
+                                </AccordionDetails>
+                            </Accordion>
+                        ))}
+                        
+
+                    </Box>
+                </Grid>
+
+
+            </Grid>
+
+
+
     </div>
   );
 };
