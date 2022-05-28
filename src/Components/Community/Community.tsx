@@ -1,23 +1,20 @@
 import style from './Community.module.scss';
-import {ImageList,ImageListItem, Typography, Stack, Grid, Box, Accordion, AccordionDetails, AccordionSummary} from '@mui/material'
+import {ImageList,ImageListItem, Typography, Grid, Box, Accordion, AccordionDetails, AccordionSummary} from '@mui/material'
 import {getCommunityDummy} from "../../Dummy/DummyData";
 import {BuildingPlacesType, ImageType} from '../../Interface/Interface';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import AlarmIcon from '@mui/icons-material/NotificationsActive';
+import InfoIcon from '@mui/icons-material/Info';
+import PlaceIcon from '@mui/icons-material/Place';
 
 const Community = () => {
 
-
-
     const dummyData = getCommunityDummy("img").data;
     const buildingData = getCommunityDummy("building").data;
+
     return (
     <div className={style.community}>
-
-        <Stack spacing={1}>
-            <Grid container spacing={1}>
-
-
-
+            <Grid container spacing={0.5}>
                 <Grid item xs={12}>
                     <Box color="text.primary" bgcolor="white">
                         <ImageList sx={{width: 390}} cols={2} rowHeight={195}>
@@ -41,20 +38,41 @@ const Community = () => {
                     </Box>
                 </Grid>
                 <Grid item xs={12}>
-                    <Box color="text.secondary" bgcolor="white">
-                        분실물
+                    <Box bgcolor="white" sx={{py: 1}}>
+                        <Grid container>
+                            <Grid item>
+                                <AlarmIcon/>
+                            </Grid>
+                            <Grid item>
+                                <Typography>분실물</Typography>
+                            </Grid>
+                        </Grid>
                     </Box>
                 </Grid>
 
                 <Grid item xs={12}>
-                    <Box color="text.secondary" bgcolor="white">
-                        정보
+                    <Box bgcolor="white" sx={{py: 1}}>
+                        <Grid container>
+                            <Grid item>
+                                <InfoIcon/>
+                            </Grid>
+                            <Grid item>
+                                <Typography>정보</Typography>
+                            </Grid>
+                        </Grid>
                     </Box>
                 </Grid>
 
                 <Grid item xs={12}>
-                    <Box color="text.secondary" bgcolor="white">
-                        장소 안내
+                    <Box bgcolor="white" sx={{py: 1}}>
+                        <Grid container>
+                            <Grid item>
+                                <PlaceIcon/>
+                            </Grid>
+                            <Grid item>
+                                <Typography>장소 안내</Typography>
+                            </Grid>
+                        </Grid>
 
                         {buildingData.map((item: BuildingPlacesType)=>(
                             <Accordion>
@@ -77,16 +95,13 @@ const Community = () => {
                                 </AccordionDetails>
                             </Accordion>
                         ))}
-
-
+                        
 
                     </Box>
                 </Grid>
 
 
             </Grid>
-
-        </Stack>
 
 
 
