@@ -15,9 +15,9 @@ const Community = () => {
     return (
     <div className={style.community}>
             <Grid container spacing={0.5}>
-                <Grid item xs={12}>
+                <Grid item>
                     <Box color="text.primary" bgcolor="white">
-                        <ImageList sx={{width: 390}} cols={2} rowHeight={195}>
+                        <ImageList cols={2} rowHeight={200} sx={{mt: 0}}>
                             {dummyData.map((item:ImageType)=>(
                                 <ImageListItem key={item.img}>
                                     <img
@@ -38,7 +38,7 @@ const Community = () => {
                     </Box>
                 </Grid>
                 <Grid item xs={12}>
-                    <Box bgcolor="white" sx={{py: 1}}>
+                    <Box bgcolor="white" sx={{p: 1}}>
                         <Grid container>
                             <Grid item>
                                 <AlarmIcon/>
@@ -51,7 +51,7 @@ const Community = () => {
                 </Grid>
 
                 <Grid item xs={12}>
-                    <Box bgcolor="white" sx={{py: 1}}>
+                    <Box bgcolor="white" sx={{p: 1}}>
                         <Grid container>
                             <Grid item>
                                 <InfoIcon/>
@@ -64,7 +64,7 @@ const Community = () => {
                 </Grid>
 
                 <Grid item xs={12}>
-                    <Box bgcolor="white" sx={{py: 1}}>
+                    <Box bgcolor="white" sx={{p: 1}}>
                         <Grid container>
                             <Grid item>
                                 <PlaceIcon/>
