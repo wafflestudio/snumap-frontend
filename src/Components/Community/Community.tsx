@@ -11,6 +11,8 @@ const Community = () => {
 
     const dummyData = getCommunityDummy("img").data;
     const buildingData = getCommunityDummy("building").data;
+    const lostData = "김xx님 1층에서 S카드 습득했습니다.";
+
 
     return (
     <div className={style.community}>
@@ -39,19 +41,22 @@ const Community = () => {
                 </Grid>
                 <Grid item xs={12}>
                     <Box bgcolor="white" sx={{p: 1}}>
-                        <Grid container>
+                        <Grid container alignItems="center">
                             <Grid item>
                                 <AlarmIcon/>
                             </Grid>
-                            <Grid item>
+                            <Grid item sx={{px: 0.5}}>
                                 <Typography>분실물</Typography>
+                            </Grid>
+                            <Grid item sx={{px: 1}} color="gray">
+                                <Typography>{lostData}</Typography>
                             </Grid>
                         </Grid>
                     </Box>
                 </Grid>
 
                 <Grid item xs={12}>
-                    <Box bgcolor="white" sx={{p: 1}}>
+                    <Box bgcolor="white" sx={{p: 1, height: 150}}>
                         <Grid container>
                             <Grid item>
                                 <InfoIcon/>
